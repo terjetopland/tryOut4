@@ -3,7 +3,10 @@ import * as React from 'react';
 import {useState} from "react";
 import Login from './components/Login';
 import Register from "./components/Register";
-import {Button, View, Text, StyleSheet} from "react-native";
+import SignOut from "./components/LogOut";
+import {Button, View, Text, StyleSheet, ScrollView} from "react-native";
+import {getAuth} from "firebase/auth";
+
 
 
 
@@ -13,21 +16,22 @@ const App = () => {
 
     if (!user) {
         return (
-            <View style={baseStyles.overall}>
+            <ScrollView style={baseStyles.overall}>
                 <View>
                     <Register/>
                 </View>
                 <View>
                     <Login setUser={setUser}/>
                 </View>
-            </View>
+            </ScrollView>
         )}
     else {
         return (
             <View style={baseStyles.overall}>
                 <Text>
-                    Now it worked fine!!
+                    Now it worked fine !!
                 </Text>
+                <SignOut/>
             </View>
         );
     }
