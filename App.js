@@ -1,20 +1,48 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// App.js
+import * as React from 'react';
+import {useState} from "react";
+import Login from './components/Login';
+import Register from "./components/Register";
+import SignOut from "./components/LogOut";
+import {Button, View, Text, StyleSheet, ScrollView} from "react-native";
+import {getAuth} from "firebase/auth";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+
+
+
+const App = () => {
+    const [user, setUser] = useState('');
+
+    if (!user) {
+        return (
+            <ScrollView style={baseStyles.overall}>
+                <View>
+                    <Register/>
+                </View>
+                <View>
+                    <Login setUser={setUser}/>
+                </View>
+            </ScrollView>
+        )}
+    else {
+        return (
+            <View style={baseStyles.overall}>
+                <Text>
+                    Now it worked fine !!
+                </Text>
+                <SignOut/>
+            </View>
+        );
+    }
+
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const baseStyles = StyleSheet.create({
+    overall: {
+        marginTop: 100,
+        textAlign: 'center',
+        backgroundColor: 'rgba(180,255,240, 0.5)'
+    }
 });
+export default App;
