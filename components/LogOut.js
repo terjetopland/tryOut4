@@ -3,7 +3,7 @@ import {View, Text, Button} from "react-native";
 import { auth } from "../firebaseConfig";
 
 
-const SignOut = () => {
+const LogOut = () => {
 
  const signMeOut = () => {
      signOut(auth)
@@ -28,4 +28,4 @@ const SignOut = () => {
         />
     );
 }
-export default SignOut;
+export default LogOut;

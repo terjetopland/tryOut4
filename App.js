@@ -3,7 +3,7 @@ import * as React from 'react';
 import {useState} from "react";
 import Login from './components/Login';
 import Register from "./components/Register";
-import SignOut from "./components/LogOut";
+import LogOut from "./components/LogOut";
 import {Button, View, Text, StyleSheet, ScrollView} from "react-native";
 import {getAuth} from "firebase/auth";
 
@@ -29,9 +29,9 @@ const App = () => {
         return (
             <View style={baseStyles.overall}>
                 <Text>
-                    Now it worked fine !!
+                    Now it worked fine!
                 </Text>
-                <SignOut/>
+                <LogOut/>
             </View>
         );
     }

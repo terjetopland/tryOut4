@@ -1,6 +1,6 @@
 import { useState} from "react";
 import { auth } from "../firebaseConfig";
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import {Button, TextInput, View, StyleSheet} from "react-native";
 
 
@@ -67,11 +67,5 @@ function Register() {
         )
     }
 
-    const styles = StyleSheet.create({
-        register: {
-            flex: 1,
-            marginTop: 40
-        }
-});
 
 export default Register;
