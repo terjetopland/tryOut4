@@ -1,11 +1,13 @@
 // App.js
 import * as React from 'react';
 import {useState} from "react";
+import {Button, View, Text, StyleSheet, ScrollView} from "react-native";
+import "react-native-gesture-handler";
 import Login from './components/Login';
 import Register from "./components/Register";
-import LogOut from "./components/LogOut";
-import {Button, View, Text, StyleSheet, ScrollView} from "react-native";
-import {getAuth} from "firebase/auth";
+
+
+
 
 
 
@@ -27,12 +29,11 @@ const App = () => {
         )}
     else {
         return (
-            <View style={baseStyles.overall}>
+            <ScrollView style={baseStyles.overall}>
                 <Text>
                     Now it worked fine!
                 </Text>
-                <LogOut/>
-            </View>
+            </ScrollView>
         );
     }
 
