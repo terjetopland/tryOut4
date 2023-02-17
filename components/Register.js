@@ -2,7 +2,8 @@ import { useState} from "react";
 import { auth } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import {Button, TextInput, View, StyleSheet} from "react-native";
-
+import GoToButton from "./GoToButton";
+import Login from "./Login";
 
 
 function Register() {
@@ -63,6 +64,7 @@ function Register() {
                     title={'Register'}
                     onPress={register}
                 />
+                <GoToButton screenName={Login}/>
             </View>
         )
     }

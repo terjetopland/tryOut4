@@ -4,6 +4,11 @@ import {signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../firebaseConfig";
 import {Button, Text, TextInput, View, StyleSheet} from "react-native";
 import Register from "./Register";
+import {createNativeStackNavigator} from "react-native-screens/native-stack";
+import GoToButton from "./GoToButton";
+
+
+
 
 
 // The prop setUser is a function that allows the parent component to get the logged-in user from this component
@@ -11,6 +16,7 @@ const Login = ({setUser}) => {
     // Component state, mirrors the input fields
     const [username, setUsername] = useState(''); // person1@person1.com
     const [password, setPassword] = useState(''); // Password1.
+
 
     // Logs in the user based on the value of the component state.
     // This function is called when the button declared below is pressed.
@@ -30,6 +36,7 @@ const Login = ({setUser}) => {
             });
     }
 
+
     return (
         <View>
             <TextInput
@@ -48,6 +55,8 @@ const Login = ({setUser}) => {
                 onPress={loginUser}
                 title="Log in"
             />
+            <GoToButton
+                screenName={Register}/>
         </View>
     );
 }
