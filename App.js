@@ -5,6 +5,7 @@ import {Button, View, Text, StyleSheet, ScrollView} from "react-native";
 import "react-native-gesture-handler";
 import Login from './components/Login';
 import Register from "./components/Register";
+import Logout from "./components/LogOut";
 
 
 
@@ -33,6 +34,7 @@ const App = () => {
                 <Text>
                     Now it worked fine!
                 </Text>
+                <Logout/>
             </ScrollView>
         );
     }
