@@ -64,7 +64,6 @@ function Register() {
                     title={'Register'}
                     onPress={register}
                 />
-                <GoToButton screenName={Login}/>
             </View>
         )
     }

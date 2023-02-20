@@ -55,8 +55,6 @@ const Login = ({setUser}) => {
                 onPress={loginUser}
                 title="Log in"
             />
-            <GoToButton
-                screenName={Register}/>
         </View>
     );
 }
