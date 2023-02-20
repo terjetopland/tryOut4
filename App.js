@@ -1,51 +1,38 @@
 // App.js
 import * as React from 'react';
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {Button, View, Text, StyleSheet, ScrollView} from "react-native";
 import "react-native-gesture-handler";
+
 import Login from './components/Login';
 import Register from "./components/Register";
-import Logout from "./components/LogOut";
+import LoggedInScreen from "./components/LoggedInScreen";
+import {auth} from "./firebaseConfig";
 
 
 
-
-
-
-
-
+// JavaScript Lambda syntax
 const App = () => {
     const [user, setUser] = useState('');
+    const [initializing, setInitializing] = useState(true);
+
+    function onAuthStateChanged(user) {
+        setUser(user);
+        if(initializing) setInitializing(false);
+    }
+
+    useEffect(()=> {
+        const subscriber = auth.onAuthStateChanged(onAuthStateChanged);
+        return subscriber;
+    }, []);
+
+    if (initializing) return null;
 
     if (!user) {
-        return (
-            <ScrollView style={baseStyles.overall}>
-                <View>
-                    <Register/>
-                </View>
-                <View>
-                    <Login setUser={setUser}/>
-                </View>
-            </ScrollView>
-        )}
-    else {
-        return (
-            <ScrollView style={baseStyles.overall}>
-                <Text>
-                    Now it worked fine!
-                </Text>
-                <Logout/>
-            </ScrollView>
-        );
+        return <Login setUser={setUser}/>
     }
+        return <LoggedInScreen/>
 
 }
 
-const baseStyles = StyleSheet.create({
-    overall: {
-        marginTop: 100,
-        textAlign: 'center',
-        backgroundColor: 'rgba(180,255,240, 0.5)'
-    }
-});
 export default App;
