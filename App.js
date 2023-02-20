@@ -1,16 +1,10 @@
 // App.js
 import * as React from 'react';
-import {useState, useEffect} from "react";
-import {Button, View, Text, StyleSheet, ScrollView} from "react-native";
+import {useEffect, useState} from 'react';
 import "react-native-gesture-handler";
-
-import Login from './components/Login';
-import Register from "./components/Register";
 import LoggedInScreen from "./components/LoggedInScreen";
 import {auth} from "./firebaseConfig";
-
-
-
+import LoginRegisterStack from "./components/LoginRegisterContainer";
 // JavaScript Lambda syntax
 const App = () => {
     const [user, setUser] = useState('');
@@ -22,14 +16,15 @@ const App = () => {
     }
 
     useEffect(()=> {
-        const subscriber = auth.onAuthStateChanged(onAuthStateChanged);
-        return subscriber;
+        return auth.onAuthStateChanged(onAuthStateChanged);
     }, []);
 
     if (initializing) return null;
 
     if (!user) {
-        return <Login setUser={setUser}/>
+        return (
+            <LoginRegisterStack/>
+        );
     }
         return <LoggedInScreen/>
 
