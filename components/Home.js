@@ -1,5 +1,6 @@
 import {ScrollView, SafeAreaView, Text, TextInput, StyleSheet, Button, View} from "react-native";
 import React, {useState} from "react";
+import {auth} from "../firebaseConfig";
 import GoToButton from "./GoToButton";
 import Logout from "./Logout";
 
@@ -8,14 +9,17 @@ import Logout from "./Logout";
 
 
 const Home = () => {
-    const [message, setMessage] = useState('');
+    const [message, setMessage] = useState('')
+
+    // Retrieve current user
+    const user = auth.currentUser;
 
 
     return (
         <View style={styles.container}>
             <View style={{flex: 1}}>
                 <Text>
-                    Now it worked fine.
+                    Hello {user.email}!!
                 </Text>
             </View>
             <View style={{flex: 1}}>
@@ -52,7 +56,8 @@ const styles = StyleSheet.create({
     },
     message: {
         top: 10,
-        fontSize: 200,
+        fontSize: 30,
+        height:200,
         backgroundColor: 'rgba(220, 220, 170, 0.4)',
         color: 'green'
     }
