@@ -11,7 +11,7 @@ import Register from "./Register";
 
 
 // The prop setUser is a function that allows the parent component to get the logged-in user from this component
-const Login = ({setUser}) => {
+const Login = () => {
     // Component state, mirrors the input fields
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -27,7 +27,7 @@ const Login = ({setUser}) => {
                 Alert.alert('Success!', 'You are now logged in!');
 
                 // Call the setter passed to us as a prop
-                setUser(user);
+                //setUser(user); If using this, u have to add {setUser} as parameter in Login.
             })
             .catch((error) => {
                 console.log(`Error: ${error.code} ${error.message}`);
@@ -55,7 +55,6 @@ const Login = ({setUser}) => {
                 onPress={loginUser}
                 title="Log in"
             />
-            <GoToButton screenName={Register}/>
         </View>
     );
 }

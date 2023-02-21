@@ -1,50 +1,51 @@
 import React from "react";
 import { NavigationContainer} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Logout from "./Logout";
-import Home from "./Home";
+import Login from "./Login";
+import Register from "./Register";
 import GoToButton from "./GoToButton";
 import {View} from "react-native";
 import {StandardSetupStyle} from "../styling/Standard";
 
-const StackLoggedIn = createNativeStackNavigator();
 
-const HomeScreen = () => {
+const StackLoginRegister = createNativeStackNavigator();
+
+const LoginScreen = () => {
     return (
         <View style={StandardSetupStyle.container}>
             <View style={StandardSetupStyle.restOfPage}>
-                <Home/>
+                <Login/>
             </View>
             <View style={StandardSetupStyle.gotoButton}>
-                <GoToButton screenName={Logout}/>
+                <GoToButton screenName={Register}/>
             </View>
         </View>
-    )
+    );
 }
 
-const LogoutScreen = () => {
+const RegisterScreen = () => {
     return (
         <View style={StandardSetupStyle.container}>
             <View style={StandardSetupStyle.restOfPage}>
-                <Logout/>
+                <Register/>
             </View>
             <View style={StandardSetupStyle.gotoButton}>
-                <GoToButton screenName={Home}/>
+                <GoToButton screenName={Login}/>
             </View>
         </View>
-    )
+    );
 }
-function HomeStack() {
+
+function LoginRegisterScreen() {
     return (
         <NavigationContainer>
-            <StackLoggedIn.Navigator>
-                <StackLoggedIn.Screen name="Home" component={HomeScreen}/>
-                <StackLoggedIn.Screen name="Logout" component={LogoutScreen}/>
-            </StackLoggedIn.Navigator>
+            <StackLoginRegister.Navigator initialRouteName="Login">
+                <StackLoginRegister.Screen name="Login" component={LoginScreen}/>
+                <StackLoginRegister.Screen name="Register" component={RegisterScreen}/>
+            </StackLoginRegister.Navigator>
         </NavigationContainer>
     );
 }
 
 
-
-export default HomeStack;
+export default LoginRegisterScreen;
