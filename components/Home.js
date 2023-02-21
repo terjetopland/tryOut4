@@ -1,24 +1,41 @@
-import {ScrollView, SafeAreaView, Text, TextInput, StyleSheet, Button, View} from "react-native";
-import React, {useState} from "react";
+import {Text, TextInput, StyleSheet, Button, View} from "react-native";
+import React, {useEffect, useState} from "react";
+import {auth, db} from "../firebaseConfig";
+import {doc, getDoc } from "firebase/firestore";
 import GoToButton from "./GoToButton";
 import Logout from "./Logout";
 
 
-
-
-
 const Home = () => {
     const [message, setMessage] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+
+    // Retrieve current user
+    const user = auth.currentUser;
+
+    useEffect(() => {
+        const getFirstName = async () => {
+            // document ref
+            const docRef = doc(db, "users", user.uid);
+            const docSnapshot = getDoc(docRef);
+
+            if((await docSnapshot).exists()) {
+                setFirstName((await docSnapshot).get("fName"));
+                setLastName((await docSnapshot).get("lName"));
+            }
+        };
+
+        getFirstName();
+    }, []);
 
 
     return (
-        <View style={styles.container}>
-            <View style={{flex: 1}}>
+        <View >
                 <Text>
-                    Now it worked fine.
+                    Hello {firstName} {lastName}!!
+                    Your email is {user.email} .
                 </Text>
-            </View>
-            <View style={{flex: 1}}>
                 <TextInput
                     placeholder={'Write your message here'}
                     value={message}
@@ -28,15 +45,9 @@ const Home = () => {
                     title={'Refresh message'}
                     onPress={() => setMessage('')}
                 />
-            </View>
-            <View style={{flex: 5}}>
                <Text style={styles.message}>
                     {message}
                 </Text>
-            </View>
-            <View style={{flex: 1}}>
-                <GoToButton screenName={Logout}/>
-            </View>
         </View>
     );
 }
@@ -52,7 +63,8 @@ const styles = StyleSheet.create({
     },
     message: {
         top: 10,
-        fontSize: 200,
+        fontSize: 30,
+        height: 150,
         backgroundColor: 'rgba(220, 220, 170, 0.4)',
         color: 'green'
     }
