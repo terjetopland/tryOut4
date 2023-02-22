@@ -1,15 +1,16 @@
 import { StyleSheet, View, Text, Button, TextInput, Alert} from "react-native";
-import React, { useState } from "react";
-import { doc, setDoc, collection } from "firebase/firestore";
+import React, {useEffect, useState} from "react";
+import { doc, setDoc, getDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
-const AddClass =  () => {
+
+const AddClasses =  () => {
     const [classID, setClassID] = useState('');
     const [className, setClassName] = useState('');
     const [hint, setHint] = useState('');
 
 
-    async  function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
         if(className === '' || classID === '' || classID === '' && className === '') {
             return setHint('Fill in both fields!')
@@ -32,19 +33,20 @@ const AddClass =  () => {
     function refreshInputField() {
         setClassID('');
         setClassName('');
+        setHint('');
     }
 
 
     return (
         <View>
             <TextInput
-                style={addClassStyles.input}
+                style={classStyles.input}
                 value={classID}
                 placeholder={'Enter class Id'}
                 onChangeText={setClassID}
             />
             <TextInput
-                style={addClassStyles.input}
+                style={classStyles.input}
                 value={className}
                 placeholder={'Enter class name'}
                 onChangeText={setClassName}
@@ -58,7 +60,7 @@ const AddClass =  () => {
                 title={'Refresh input fields'}
                 onPress={refreshInputField}
             />
-            <Text style={addClassStyles.redHintText}>
+            <Text style={classStyles.redHintText}>
                 {hint}
             </Text>
         </View>
@@ -66,7 +68,9 @@ const AddClass =  () => {
 
 }
 
-const addClassStyles = StyleSheet.create({
+
+
+const classStyles = StyleSheet.create({
     input: {
         height: 40,
         margin: 12,
@@ -79,5 +83,4 @@ const addClassStyles = StyleSheet.create({
         fontSize: 40,
     }
 });
-
-export { AddClass }
+export { AddClasses }

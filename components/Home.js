@@ -1,17 +1,15 @@
 import {Text, TextInput, StyleSheet, Button, View} from "react-native";
 import React, {useEffect, useState} from "react";
 import {auth, db} from "../firebaseConfig";
-import {doc, getDoc } from "firebase/firestore";
-import {setCities} from "./TestCitiesFirestore";
-import {AddClass} from "./AddClass";
+import { doc, getDoc} from "firebase/firestore";
+
 
 
 
 const Home = () => {
-    const [message, setMessage] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [arrayOfStudents, setArrayOfStudents] = useState([]);
+
 
     // Retrieve current user
     const user = auth.currentUser;
@@ -31,29 +29,15 @@ const Home = () => {
         getNames();
     }, []);
 
-    useEffect(() => {
-        const getStudents = async () => {
-            const studentRef = doc(db, "classes", "IKT205", "students" );
-            const studentSnapshot = getDoc(studentRef);
-
-            if((await studentSnapshot).exists()) {
-                setArrayOfStudents()
-            }
-        }
-    })
-
     return (
-        <View style={homeStyles.container}>
-            <View style={homeStyles.hello}>
+        <View >
+            <View>
                 <Text>
                     Hello {firstName} {lastName}!!
                 </Text>
                 <Text>
                     Your email is {user.email} .
                 </Text>
-            </View>
-            <View style={homeStyles.addClass}>
-                <AddClass/>
             </View>
         </View>
     );
