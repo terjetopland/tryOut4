@@ -3,8 +3,8 @@ import React, {useEffect, useState} from "react";
 import {auth, db} from "../firebaseConfig";
 import {doc, getDoc } from "firebase/firestore";
 import {setCities} from "./TestCitiesFirestore";
-import {UiAClasses} from "./UiAClasses";
-
+import {AddClasses} from "./AddUiAClasses";
+import { GetClass } from "./GetUiAClasses";
 
 
 const Home = () => {
@@ -33,17 +33,14 @@ const Home = () => {
 
 
     return (
-        <View style={homeStyles.container}>
-            <View style={homeStyles.hello}>
+        <View >
+            <View>
                 <Text>
                     Hello {firstName} {lastName}!!
                 </Text>
                 <Text>
                     Your email is {user.email} .
                 </Text>
-            </View>
-            <View style={homeStyles.addClass}>
-                <UiAClasses/>
             </View>
         </View>
     );

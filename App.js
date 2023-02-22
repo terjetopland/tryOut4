@@ -2,9 +2,9 @@
 import * as React from 'react';
 import {useEffect, useState} from 'react';
 import "react-native-gesture-handler";
-import LoggedInScreen from "./components/LoggedInScreen";
 import {auth} from "./firebaseConfig";
 import LoginRegisterScreen from "./components/LoginRegisterScreen";
+import HomeStack from "./components/LoggedInScreen";
 
 // JavaScript Lambda syntax
 const App = () => {
@@ -28,7 +28,7 @@ const App = () => {
             <LoginRegisterScreen/>
         );
     }
-        return <LoggedInScreen/>
+        return <HomeStack/>
 
 }
 
