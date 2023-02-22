@@ -2,8 +2,6 @@ import React, {useState} from "react";
 import {signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../firebaseConfig";
 import {Button, TextInput, View, StyleSheet, Alert} from "react-native";
-import GoToButton from "./GoToButton";
-import Register from "./Register";
 
 
 

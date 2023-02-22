@@ -2,6 +2,7 @@ import {Text, TextInput, StyleSheet, Button, View} from "react-native";
 import React, {useEffect, useState} from "react";
 import {auth, db} from "../firebaseConfig";
 import {doc, getDoc } from "firebase/firestore";
+import {setCities} from "./TestCitiesFirestore";
 
 
 
@@ -29,6 +30,17 @@ const Home = () => {
         getNames();
     }, []);
 
+    useEffect(() => {
+        const getStudents = async () => {
+            const studentRef = doc(db, "classes", "IKT205", "students" );
+            const studentSnapshot = getDoc(studentRef);
+
+            if((await studentSnapshot).exists()) {
+                setArrayOfStudents()
+            }
+        }
+    })
+
     return (
         <View >
                 <Text>
@@ -37,6 +49,10 @@ const Home = () => {
                 <Text>
                     Your email is {user.email} .
                 </Text>
+            <Button
+                title={'Add cities'}
+                onPress={setCities}
+            />
         </View>
     );
 }
