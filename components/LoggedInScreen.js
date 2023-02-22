@@ -21,7 +21,7 @@ const HomeScreen = () => {
                 <GoToButton screenName={UiAClasses}/>
             </View>
             <View style={StandardSetupStyle.gotoButton}>
-                <GoToButton screenName={Logout}/>
+                <GoToButton screenName={Logout} color={'green'}/>
             </View>
         </View>
     )
@@ -34,7 +34,7 @@ const LogoutScreen = () => {
                 <Logout/>
             </View>
             <View style={StandardSetupStyle.gotoButton}>
-                <GoToButton screenName={Home}/>
+                <GoToButton screenName={Home} color={'green'}/>
             </View>
         </View>
     )
@@ -46,7 +46,7 @@ const UiAClassesScreen = () => {
                 <UiAClasses/>
             </View>
             <View style={StandardSetupStyle.gotoButton}>
-                <GoToButton screenName={Home}/>
+                <GoToButton screenName={Home} color={'green'}/>
             </View>
         </View>
     )

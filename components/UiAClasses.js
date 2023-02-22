@@ -1,14 +1,17 @@
 import {Button, ScrollView, View} from "react-native";
 import {AddClasses} from "./AddUiAClasses";
-import {GetClass} from "./GetUiAClasses";
-
+import {GetUiAClassById} from "./GetUiAClassById";
+import { GetAllUiAClasses } from "./GetAllUiAClasses";
 
 
 const UiAClasses = ()   => {
     return (
         <ScrollView>
-            <AddClasses/>
-            <GetClass/>
+            <View>
+                <AddClasses/>
+                <GetUiAClassById/>
+                < GetAllUiAClasses/>
+            </View>
         </ScrollView>
     )
 };

@@ -3,7 +3,7 @@ import {db} from "../firebaseConfig";
 import {Button, StyleSheet, Text, TextInput, View} from "react-native";
 import React, {useEffect, useState} from "react";
 
-const GetClass = () => {
+const GetUiAClassById = () => {
     const [classID, setClassID] = useState('');
     const [className, setClassName] = useState('');
     const [viewText, setViewText] = useState('');
@@ -71,4 +71,4 @@ const classStyles = StyleSheet.create({
     }
 });
 
-export { GetClass }
+export { GetUiAClassById }

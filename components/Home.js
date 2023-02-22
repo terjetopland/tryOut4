@@ -1,17 +1,15 @@
 import {Text, TextInput, StyleSheet, Button, View} from "react-native";
 import React, {useEffect, useState} from "react";
 import {auth, db} from "../firebaseConfig";
-import {doc, getDoc } from "firebase/firestore";
-import {setCities} from "./TestCitiesFirestore";
-import {AddClasses} from "./AddUiAClasses";
-import { GetClass } from "./GetUiAClasses";
+import { doc, getDoc} from "firebase/firestore";
+
+
 
 
 const Home = () => {
-    const [message, setMessage] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [arrayOfStudents, setArrayOfStudents] = useState([]);
+
 
     // Retrieve current user
     const user = auth.currentUser;
@@ -30,7 +28,6 @@ const Home = () => {
 
         getNames();
     }, []);
-
 
     return (
         <View >

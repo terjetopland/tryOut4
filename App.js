@@ -21,6 +21,8 @@ const App = () => {
         return auth.onAuthStateChanged(onAuthStateChanged);
     }, []);
 
+
+
     if (initializing) return null;
 
     if (!user) {
