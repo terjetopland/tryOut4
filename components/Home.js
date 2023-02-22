@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import {auth, db} from "../firebaseConfig";
 import {doc, getDoc } from "firebase/firestore";
 import {setCities} from "./TestCitiesFirestore";
+import {AddClass} from "./AddClass";
 
 
 
@@ -42,20 +43,32 @@ const Home = () => {
     })
 
     return (
-        <View >
+        <View style={homeStyles.container}>
+            <View style={homeStyles.hello}>
                 <Text>
                     Hello {firstName} {lastName}!!
                 </Text>
                 <Text>
                     Your email is {user.email} .
                 </Text>
-            <Button
-                title={'Add cities'}
-                onPress={setCities}
-            />
+            </View>
+            <View style={homeStyles.addClass}>
+                <AddClass/>
+            </View>
         </View>
     );
 }
 
+const homeStyles = StyleSheet.create({
+    container: {
+        flex: 1
+    },
+    hello: {
+        flex: 1
+    },
+    addClass: {
+        flex: 2
+    },
+});
 
 export default Home;
