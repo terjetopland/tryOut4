@@ -32,6 +32,7 @@ const AddClass =  () => {
     function refreshInputField() {
         setClassID('');
         setClassName('');
+        setHint('');
     }
 
 

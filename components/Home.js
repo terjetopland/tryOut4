@@ -31,16 +31,6 @@ const Home = () => {
         getNames();
     }, []);
 
-    useEffect(() => {
-        const getStudents = async () => {
-            const studentRef = doc(db, "classes", "IKT205", "students" );
-            const studentSnapshot = getDoc(studentRef);
-
-            if((await studentSnapshot).exists()) {
-                setArrayOfStudents()
-            }
-        }
-    })
 
     return (
         <View style={homeStyles.container}>
