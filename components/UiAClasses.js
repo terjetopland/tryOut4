@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { doc, setDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
-const AddClass =  () => {
+const UiAClasses =  () => {
     const [classID, setClassID] = useState('');
     const [className, setClassName] = useState('');
     const [hint, setHint] = useState('');
@@ -81,4 +81,4 @@ const addClassStyles = StyleSheet.create({
     }
 });
 
-export { AddClass }
+export { UiAClasses }

@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import {auth, db} from "../firebaseConfig";
 import {doc, getDoc } from "firebase/firestore";
 import {setCities} from "./TestCitiesFirestore";
-import {AddClass} from "./AddClass";
+import {UiAClasses} from "./UiAClasses";
 
 
 
@@ -43,7 +43,7 @@ const Home = () => {
                 </Text>
             </View>
             <View style={homeStyles.addClass}>
-                <AddClass/>
+                <UiAClasses/>
             </View>
         </View>
     );

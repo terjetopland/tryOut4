@@ -34,6 +34,7 @@ const LogoutScreen = () => {
         </View>
     )
 }
+
 function HomeStack() {
     return (
         <NavigationContainer>
