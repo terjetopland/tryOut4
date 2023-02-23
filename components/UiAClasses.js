@@ -10,7 +10,6 @@ const UiAClasses = ()   => {
             <View>
                 <AddClasses/>
                 <GetUiAClassById/>
-                < GetAllUiAClasses/>
             </View>
         </ScrollView>
     )

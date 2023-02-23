@@ -5,6 +5,7 @@ import "react-native-gesture-handler";
 import {auth} from "./firebaseConfig";
 import LoginRegisterScreen from "./components/LoginRegisterScreen";
 import HomeStack from "./components/LoggedInScreen";
+import {GetAllUiAClasses} from "./components/GetAllUiAClasses";
 
 // JavaScript Lambda syntax
 const App = () => {
