@@ -2,10 +2,11 @@
 import * as React from 'react';
 import {useEffect, useState} from 'react';
 import "react-native-gesture-handler";
-import {auth} from "./firebaseConfig";
+import {auth, db} from "./firebaseConfig";
 import LoginRegisterScreen from "./components/LoginRegisterScreen";
-import HomeStack from "./components/LoggedInScreen";
+import LoggedInScreen from "./components/LoggedInScreen";
 import {GetAllUiAClasses} from "./components/GetAllUiAClasses";
+import {collection, getDocs} from "firebase/firestore";
 
 // JavaScript Lambda syntax
 const App = () => {
@@ -23,7 +24,6 @@ const App = () => {
     }, []);
 
 
-
     if (initializing) return null;
 
     if (!user) {
@@ -31,7 +31,9 @@ const App = () => {
             <LoginRegisterScreen/>
         );
     }
-        return <HomeStack/>
+        return <LoggedInScreen/>
+
+
 
 }
 

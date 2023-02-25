@@ -54,7 +54,7 @@ const UiAClassesScreen = () => {
 
 
 
-function HomeStack() {
+function LoggedInScreen() {
     //remember that name must match an exported component!! component is locally here
     return (
         <NavigationContainer>
@@ -69,4 +69,4 @@ function HomeStack() {
 
 
 
-export default HomeStack;
+export default LoggedInScreen;
