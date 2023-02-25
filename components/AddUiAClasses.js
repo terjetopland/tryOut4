@@ -2,6 +2,7 @@ import { StyleSheet, View, Text, Button, TextInput, Alert} from "react-native";
 import React, {useEffect, useState} from "react";
 import { doc, setDoc, getDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig";
+import {GetAllUiAClasses} from "./GetAllUiAClasses";
 
 
 const AddClasses =  () => {
