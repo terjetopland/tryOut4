@@ -3,7 +3,7 @@ import { NavigationContainer} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Logout from "./Logout";
 import Home from "./Home";
-import UiAClasses from "./UiAClasses";
+import {UiAClasses} from "./UiAClasses";
 import GoToButton from "./GoToButton";
 import {Button, View} from "react-native";
 import {StandardSetupStyle} from "../styling/Standard";
