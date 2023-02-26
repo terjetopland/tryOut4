@@ -1,72 +1,62 @@
 import React from "react";
 import { NavigationContainer} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Logout from "./Logout";
 import Home from "./Home";
-import UiAClasses from "./UiAClasses";
-import GoToButton from "./GoToButton";
-import {Button, View} from "react-native";
-import {StandardSetupStyle} from "../styling/Standard";
+import GetAllUiAClasses from "./GetAllUiAClasses";
+import AddClass from "./AddClass";
+import DeleteClassById from "./DeleteClassById";
 
 
 
+const LoggedInTabs = createBottomTabNavigator();
+const HomeStack = createNativeStackNavigator();
+const ClassesStack = createNativeStackNavigator();
 
-const StackLoggedIn = createNativeStackNavigator();
-
-const HomeScreen = () => {
+const HomeStackScreen = () => {
     return (
-        <View style={StandardSetupStyle.container}>
-            <View style={StandardSetupStyle.restOfPage}>
-                <Home/>
-                <GoToButton screenName={UiAClasses}/>
-            </View>
-            <View style={StandardSetupStyle.gotoButton}>
-                <GoToButton screenName={Logout} color={'green'}/>
-            </View>
-        </View>
+        <HomeStack.Navigator>
+            <HomeStack.Screen name={'Home'} component={Home}/>
+            <HomeStack.Screen name={'Logout'} component={Logout}/>
+        </HomeStack.Navigator>
     )
 }
 
-const LogoutScreen = () => {
+const ClassesStackScreen = () => {
     return (
-        <View style={StandardSetupStyle.container}>
-            <View style={StandardSetupStyle.restOfPage}>
-                <Logout/>
-            </View>
-            <View style={StandardSetupStyle.gotoButton}>
-                <GoToButton screenName={Home} color={'green'}/>
-            </View>
-        </View>
-    )
-}
-const UiAClassesScreen = () => {
-    return (
-        <View style={StandardSetupStyle.container}>
-            <View style={StandardSetupStyle.restOfPage}>
-                <UiAClasses/>
-            </View>
-            <View style={StandardSetupStyle.gotoButton}>
-                <GoToButton screenName={Home} color={'green'}/>
-            </View>
-        </View>
-    )
-}
+        <ClassesStack.Navigator initialRouteName={GetAllUiAClasses}>
+            <ClassesStack.Screen
+                name={'GetAllUiAClasses'}
+                component={GetAllUiAClasses}
+                options={{title: 'All UIA classes'}}
+            />
+            <ClassesStack.Screen
+                name={'AddClass'}
+                component={AddClass}
+                options={{title: 'Add class'}}
+            />
+            <ClassesStack.Screen
+                name={'DeleteClassById'}
+                component={DeleteClassById}
+                options={{title: 'Delete class'}}
+            />
 
+        </ClassesStack.Navigator>
+    )
+}
 
 
 function LoggedInScreen() {
     //remember that name must match an exported component!! component is locally here
     return (
         <NavigationContainer>
-            <StackLoggedIn.Navigator>
-                <StackLoggedIn.Screen name="Home" component={HomeScreen}/>
-                <StackLoggedIn.Screen name="Logout" component={LogoutScreen}/>
-                <StackLoggedIn.Screen name="UiAClasses" component={UiAClassesScreen}/>
-            </StackLoggedIn.Navigator>
+            <LoggedInTabs.Navigator>
+                <LoggedInTabs.Screen name={'Home stack'} component={HomeStackScreen}/>
+                <LoggedInTabs.Screen name={'UiA Classes'} component={ClassesStackScreen}/>
+            </LoggedInTabs.Navigator>
         </NavigationContainer>
     );
 }
-
-
 
 export default LoggedInScreen;
