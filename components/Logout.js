@@ -1,9 +1,7 @@
-import { getAuth, signOut } from "firebase/auth";
-import {View, Text, Button, Alert, StyleSheet} from "react-native";
+import {View, Button, Alert} from "react-native";
 import { auth } from "../firebaseConfig";
-import GoToButton from "./GoToButton";
-import Home from "./Home";
-import {useNavigation} from "@react-navigation/native";
+import React from "react";
+import {StandardSetupStyle} from "../styling/Standard";
 
 
 const Logout = () => {
@@ -15,11 +13,14 @@ const Logout = () => {
     }
 
     return (
-        <View>
-            <Button
-                title={'Log out'}
-                onPress={logOut}
-            />
+
+        <View style={StandardSetupStyle.container}>
+            <View style={StandardSetupStyle.restOfPage}>
+                <Button
+                    title={'Log out'}
+                    onPress={logOut}
+                />
+            </View>
         </View>
     );
 
